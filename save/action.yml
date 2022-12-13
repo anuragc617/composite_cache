@@ -21,7 +21,7 @@ runs:
       pwd
       npm install
   - uses: actions/cache/save@700-actionscache-granular-cache-control
-    id: cache-restore
+    id: cache-save
     with:
       path: ${{ github.workspace }}/node_modules
       key: ${{ inputs.cache-key }}
