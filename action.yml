@@ -28,7 +28,7 @@ runs:
     with:
       path: ${{ inputs.path }}
       key: ${{ inputs.cache-key }}
-      restore-keys: ${{ inputs.cache-key }}
+      restore-keys: ${{ inputs.restore-keys }}
   - uses: actions/cache/save@700-actionscache-granular-cache-control
     id: cache-save
     with:
