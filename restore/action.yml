@@ -1,0 +1,27 @@
+name: 'Composite Actions Restore Cache'
+description: 'Cache action embedded inside composite action'
+inputs:
+   cache-key:
+     description: 'Cache key to restore'
+     required: true
+   retore-keys:
+     description: 'keys to restore from'
+     required: false
+runs:
+  using: "composite"
+  steps:
+  - name: Get current date
+    shell: bash
+    id: date
+    run: echo "::set-output name=date::$(date +'%Y-%m-%dT%H:%M:%S')"
+  - uses: actions/checkout@v2
+  - name: NPM install
+    shell: bash
+    run: |
+      pwd
+      npm install
+  - uses: actions/cache/restore@700-actionscache-granular-cache-control
+    id: cache-restore
+    with:
+      path: ${{ github.workspace }}/node_modules
+      key: ${{ inputs.cache-key }}
