@@ -4,7 +4,7 @@ inputs:
    cache-key:
      description: 'Cache key to restore'
      required: true
-   retore-keys:
+   restore-keys:
      description: 'keys to restore from'
      required: false
    path: 
@@ -28,3 +28,4 @@ runs:
     with:
       path: ${{ inputs.path }}
       key: ${{ inputs.cache-key }}
+      restore-keys: ${{ inputs.restore-keys }}
