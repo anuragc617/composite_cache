@@ -7,6 +7,9 @@ inputs:
    retore-keys:
      description: 'keys to restore from'
      required: false
+   path: 
+     description: 'Path of the folder'
+     required: true
 runs:
   using: "composite"
   steps:
@@ -23,5 +26,5 @@ runs:
   - uses: actions/cache/restore@700-actionscache-granular-cache-control
     id: cache-restore
     with:
-      path: ${{ github.workspace }}/node_modules
+      path: ${{ inputs.path }}
       key: ${{ inputs.cache-key }}
